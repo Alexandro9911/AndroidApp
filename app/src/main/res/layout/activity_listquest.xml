@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonQuest1"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="48dp"
+        android:onClick="onClick"
+        android:text="@string/_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest2"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="96dp"
+        android:onClick="onClick"
+        android:text="@string/_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest3"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="144dp"
+        android:onClick="onClick"
+        android:text="@string/_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest4"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="192dp"
+        android:onClick="onClick"
+        android:text="@string/_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest5"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="240dp"
+        android:onClick="onClick"
+        android:text="@string/_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest6"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:onClick="onClick"
+        android:layout_marginTop="288dp"
+        android:text="@string/_6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest7"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="336dp"
+        android:text="@string/_7"
+        android:onClick="onClick"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest8"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="384dp"
+        android:onClick="onClick"
+        android:text="@string/_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest9"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="432dp"
+        android:onClick="onClick"
+        android:text="@string/_9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest10"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="480dp"
+        android:onClick="onClick"
+        android:text="@string/_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/resName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest11"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/_11"
+        android:onClick="onClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest12"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/_12"
+        android:onClick="onClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest13"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/_13"
+        android:onClick="onClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest14"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/_14"
+        android:onClick="onClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest15"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/_15"
+        android:onClick="onClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest16"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="288dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/_16"
+        android:onClick="onClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest17"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="336dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/_17"
+        android:onClick="onClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest18"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="384dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/_18"
+        android:onClick="onClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest19"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="432dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/_19"
+        android:onClick="onClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuest20"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/_20"
+        android:onClick="onClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
