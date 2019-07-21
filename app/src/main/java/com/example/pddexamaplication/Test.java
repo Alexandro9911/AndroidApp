@@ -28,7 +28,7 @@ public class Test {
                 if (answ) {
                     listAnsw.add(1);
                 } else {
-                     listAnsw.add(0);
+                    listAnsw.add(0);
                 }
             } else {
                 listAnsw.add(-1);

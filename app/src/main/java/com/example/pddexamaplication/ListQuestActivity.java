@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class ListQuestActivity extends AppCompatActivity {
 
-    TestCreator creator = new   TestCreator();
+    TestCreator creator = new TestCreator();
     Test test = creator.testCreator();
     List<Question> questions = test.getTest();
     int currentNumb = 0;

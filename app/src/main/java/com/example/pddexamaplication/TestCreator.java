@@ -26,7 +26,7 @@ public class TestCreator {
 
     Test testCreator() {
         List<List<Integer>> mapId = new ArrayList<List<Integer>>();
-        List<Question>  tst = new ArrayList<Question>();
+        List<Question> tst = new ArrayList<Question>();
         Test test = new Test();
         int counter = 0;
         for (int category = 1; category < 5; category++) {

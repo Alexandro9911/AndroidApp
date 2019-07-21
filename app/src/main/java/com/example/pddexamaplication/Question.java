@@ -29,7 +29,7 @@ public class Question {
         number = n;
     }
 
-    void setRighAnsw(InputStream  stream, int ident){
+    void setRighAnsw(InputStream stream, int ident){
         Scanner scan = new Scanner(stream);
         int id = ident;
         int counter = -1;

@@ -23,7 +23,7 @@ public class GetResultActivity extends AppCompatActivity {
             image.setImageResource(R.drawable.svetoforerror);
         } else{
             ImageView image = findViewById(R.id.imageView2);
-            image.setImageResource(R.drawable.svetoforgood );
+            image.setImageResource(R.drawable.svetoforgood);
         }
         txt.setText(str);
     }

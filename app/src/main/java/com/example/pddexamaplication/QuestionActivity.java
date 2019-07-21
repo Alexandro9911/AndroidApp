@@ -29,7 +29,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         if (containsImage == 1) {
             String mDrawableName ="g"+group+"n"+ident;
-            int resID =  getResources().getIdentifier(mDrawableName , "drawable", getPackageName());
+            int resID = getResources().getIdentifier(mDrawableName , "drawable", getPackageName());
             ImageView img = new ImageView(this);
             img.setImageResource(resID);
             linLay.addView(img);
