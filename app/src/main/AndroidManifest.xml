@@ -41,6 +41,10 @@
         <activity
             android:name=".GetResultActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".MoreQuestionActivity" />
+        <activity android:name=".DopQuestionActivity" />
+        <activity android:name=".ExplainListActivity" />
+        <activity android:name=".ExplainedQuestionActivity" />
     </application>
 
 </manifest>

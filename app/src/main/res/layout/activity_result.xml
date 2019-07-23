@@ -8,6 +8,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linay3"
         android:layout_width="377dp"
         android:layout_height="582dp"
         android:layout_marginStart="19dp"
@@ -39,22 +40,5 @@
             tools:layout_editor_absoluteX="80dp"
             tools:layout_editor_absoluteY="388dp" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onClick"
-            android:text="смотреть ошибки"
-            tools:layout_editor_absoluteX="123dp"
-            tools:layout_editor_absoluteY="480dp" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:onClick="onClick"
-            android:text="заново"
-            tools:layout_editor_absoluteX="122dp"
-            tools:layout_editor_absoluteY="545dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

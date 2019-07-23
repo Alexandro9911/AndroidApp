@@ -5,11 +5,12 @@ import androidx.annotation.NonNull;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Question {
+public class Question implements Serializable {
    private int number;
    private int group;
    private int id = 0;
@@ -18,11 +19,35 @@ public class Question {
    private String textQuest = "";
    private String variantsAnsw = "";
    private int quantity = -1;
+   private String[] variants;
+   private String explainText = "";
+
+   public String getExplainText(){
+       return explainText;
+   }
+
+    public void setExplainText(InputStream stream, int ident) {
+        Scanner scan = new Scanner(stream);
+        int id = ident;
+        int counter = -1;
+        while (scan.hasNextLine() && counter <= id) {
+            counter++;
+            if (id == counter) {
+                explainText = scan.nextLine();
+            } else {
+                scan.nextLine();
+            }
+
+        }
+    }
+
+public void setPartialAnsw(int answ ){
+       partialAnsw = answ;
+}
 
 
-
-   String getVariantsAnsw(){
-       return variantsAnsw;
+   String[] getVariantsAnsw(){
+       return variants;
    }
 
     void setNumber(int n) {
@@ -97,6 +122,7 @@ public class Question {
                 scan.nextLine();
             }
         }
+        variants = variantsParser();
     }
 
     void setTextQuest(InputStream stream, int ident) {
@@ -114,12 +140,17 @@ public class Question {
         }
     }
 
-    private String getQuestFromFile(String str) { // парсер для фопроса с файла
-        String answ = "";
-        String[] parts = str.split("\t");
-        answ = parts[1];
-        return answ;
+    private String[] variantsParser(){
+        String[] arr = variantsAnsw.split("#");
+        quantity = arr.length ;
+        return arr;
     }
+//    private String getQuestFromFile(String str) { // парсер для фопроса с файла
+//        String answ = "";
+//        String[] parts = str.split("\t");
+//        answ = parts[1];
+//        return answ;
+//    }
 
     boolean checkAnsw(){ // проверка ответа на текущий вопрос
         boolean answ = false;

@@ -1,9 +1,10 @@
 package com.example.pddexamaplication;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test {
+public class Test implements Serializable {
     private List<Question> test = new ArrayList<Question>();
 
     public void setTest(List<Question> test) {
@@ -14,7 +15,18 @@ public class Test {
         return test;
     }
 
+    public int[] getGroups() {
+        return groups;
+    }
+
     private int[] groups = {0, 0};
+
+    public void setDop(int[] group){
+        groups[0] = group[0];
+        groups[1] = group[1];
+    }
+
+
     boolean flag = false;
 
     // проверка теста
@@ -43,6 +55,7 @@ public class Test {
             int currGroup = test.get(i).getGroup();
             if(results.get(i) != -1){
                 if(results.get(i) == test.get(i).getRighAnsw()){
+
                 }
                 else {
                     counter++;

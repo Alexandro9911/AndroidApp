@@ -2,21 +2,16 @@ package com.example.pddexamaplication;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
-
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.collection.ArrayMap;
-
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 
 public class ListQuestActivity extends AppCompatActivity {
 
@@ -25,11 +20,19 @@ public class ListQuestActivity extends AppCompatActivity {
     List<Question> questions = test.getTest();
     int currentNumb = 0;
     int btnCounter = 0;
+    int errorCounter = 0;
+    int[] groupsWithQuantityError = {0,0,0,0};
+    int[] groupForDop = {0,0};
+    int[] partialAnswers = new int[20];
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listquest);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Список вопросов");
+        for(int i = 0; i < 20;i ++){
+            partialAnswers[i] = -1;
+        }
         for(Question question : questions){
             answers.add(-1);
             try {
@@ -44,42 +47,55 @@ public class ListQuestActivity extends AppCompatActivity {
                         InputStream stream12 = this.getResources().openRawResource(R.raw.answgroup1);
                         question.setRighAnsw(stream12,question.getId());
                         stream12.close();
+
+                        InputStream stream123 = this.getResources().openRawResource(R.raw.explain1);
+                        question.setExplainText(stream123,question.getId());
+                        stream123.close();
                         break;
                     case 2:
                         InputStream stream2 = this.getResources().openRawResource(R.raw.textsgroup2);
                         question.setTextQuest(stream2,question.getId());
                         stream2.close();
-
                         InputStream stream21 = this.getResources().openRawResource(R.raw.variants2);
                         question.setVariants(stream21,question.getId());
                         stream21.close();
                         InputStream stream22 = this.getResources().openRawResource(R.raw.answgroup2);
                         question.setRighAnsw(stream22,question.getId());
                         stream22.close();
+
+                        InputStream stream122 = this.getResources().openRawResource(R.raw.explain2);
+                        question.setExplainText(stream122,question.getId());
+                        stream122.close();
                         break;
                     case 3:
                         InputStream stream3 = this.getResources().openRawResource(R.raw.textsgroup3);
                         question.setTextQuest(stream3,question.getId());
                         stream3.close();
-
                         InputStream stream31 = this.getResources().openRawResource(R.raw.variants3);
                         question.setVariants(stream31,question.getId());
                         stream31.close();
                         InputStream stream33 = this.getResources().openRawResource(R.raw.answgroup3);
                         question.setRighAnsw(stream33,question.getId());
                         stream33.close();
+
+                        InputStream stream121 = this.getResources().openRawResource(R.raw.explain3);
+                        question.setExplainText(stream121,question.getId());
+                        stream121.close();
                         break;
                     case 4:
                         InputStream stream4 = this.getResources().openRawResource(R.raw.textsgroup4);
                         question.setTextQuest(stream4,question.getId());
                         stream4.close();
-
                         InputStream stream41 = this.getResources().openRawResource(R.raw.variants4);
                         question.setVariants(stream41,question.getId());
                         stream41.close();
                         InputStream stream44 = this.getResources().openRawResource(R.raw.answgroup4);
                         question.setRighAnsw(stream44,question.getId());
                         stream44.close();
+
+                        InputStream stream124 = this.getResources().openRawResource(R.raw.explain4);
+                        question.setExplainText(stream124,question.getId());
+                        stream124.close();
                         break;
                 }
             }catch (IOException ex){
@@ -158,57 +174,148 @@ public class ListQuestActivity extends AppCompatActivity {
     }
     static final private int RESULT_TEST = 0;
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void onClick(View view) {
         Button myButton = (Button)view;
         int number = idParser(myButton);
-        String numberPic = "";
-        int variants = questions.get(number).getQuantity();
-        //int variants = 3;
-        String textQ= questions.get(number).getTextQuest();
-        String variantsAnsw = questions.get(number).getVariantsAnsw();
+//        String numberPic = "";
+//        int variants = questions.get(number).getQuantity();
+//        String textQ= questions.get(number).getTextQuest();
         Intent intent = new Intent(ListQuestActivity.this, QuestionActivity.class);
-        //intent.putExtra("number", questions.get(number).getNumber());
-        intent.putExtra("textQuest",questions.get(number).getTextQuest());
-        //intent.putExtra("textQuest",textQ);
-        intent.putExtra("number",Integer.toString(number) );
-        //intent.putExtra("quantityCase",Integer.toString(questions.get(number).getQuantity()));
-        intent.putExtra("quantityCase","2");
+        String stringQuest = questions.get(number).getTextQuest() + " answ = " + questions.get(number).getRighAnsw();
+        //intent.putExtra("textQuest",questions.get(number).getTextQuest());
+        intent.putExtra("textQuest", stringQuest);
+        intent.putExtra("number",Integer.toString(number));
+        intent.putExtra("quantityCase",Integer.toString(questions.get(number).getQuantity()));
         intent.putExtra("contImage", "1");
-        intent.putExtra("variants",variantsAnsw);
+        //intent.putExtra("variants",variantsAnsw);
         intent.putExtra("ident",Integer.toString(questions.get(number).getId()));
         intent.putExtra("group",Integer.toString(questions.get(number).getGroup()));
         intent.putExtra("rightAnsw", Integer.toString(questions.get(number).getRighAnsw()));
+        intent.putExtra("class", questions.get(number));
         myButton.setEnabled(false);
         myButton.setBackgroundColor(Color.rgb(255, 255, 255));
         startActivityForResult(intent,RESULT_TEST);
-        //startActivity(intent);
     }
 
     List<Integer> answers = new ArrayList<>();
+
+//    private void simpleCheck(){
+//        for(int i = 0; i< 20; i++){
+//            if(answers.get(i) == 0){
+//                int gr = getGroup(i+1);
+//               // errorCounter++;
+//                groupsWithQuantityError[gr-1]++;
+//            }
+//        }
+//    }
+
+    private  int groupQuantityErrorCheck(){
+        int summ = 0;
+        for(int i = 0;i<4; i++){
+            if(groupsWithQuantityError[i] >=2){
+                return 1;
+            }
+            if(groupsWithQuantityError[i] == 1){
+                summ++;
+            }
+        }
+        if(summ >2){
+            return 1;
+        }
+        return 0;
+    }
+//    private void setGroupsforDop(){
+//        int grCounter = 0;
+//        int quantytyCheck = groupQuantityErrorCheck();
+//        if(quantytyCheck == 0) {
+//            for (int i = 0; i < 4; i++) {
+//                if (groupsWithQuantityError[i] == 1) {
+//                    groupForDop[grCounter] = i+1;
+//                    grCounter++;
+//                }
+//            }
+//        }
+//    }
+
+    private int getGroup(int number){
+        int answ = -1;
+        if(number >= 1 && number <= 5){
+            answ =  1;
+        }
+        if(number >= 6 && number <= 10){
+            answ = 2;
+        }
+        if(number >= 11 && number <= 15){
+            answ = 3;
+        }
+        if(number >= 16 && number <= 20){
+            answ = 4;
+        }
+
+        return answ;
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RESULT_TEST ) {
             if (resultCode == RESULT_OK) {
-                String answered = data.getStringExtra("answ");
+                String answerResult = data.getStringExtra("answ");
+                partialAnswers[currentNumb] = Integer.parseInt(data.getStringExtra("partial"));
                // answers.add(currentNumb,Integer.parseInt(answered));
-                answers.set(currentNumb,Integer.parseInt(answered));
-                int currRes = test.partCheck(answers);
-                if (currRes > 2){
+                int res = Integer.parseInt(answerResult);
+                answers.set(currentNumb,res);
+                int gr =getGroup(btnCounter);
+                if(res ==0 ){
+                    errorCounter++;
+                    groupsWithQuantityError[gr-1]++;
+                }
+                int fatal = 0;
+                int summ = 0;
+                int cnt = 0;
+                for(int i = 0; i < 4; i++) {
+                    if (groupsWithQuantityError[i] >= 2) {
+                        fatal = 1;
+                    }
+                    if(groupsWithQuantityError[i]==1) {
+                        summ += groupsWithQuantityError[i];
+                        groupForDop[cnt] += 1;
+                        cnt++;
+                    }
+                }
+                if(errorCounter >= 3 || fatal ==1){
                     Intent intent = new Intent(ListQuestActivity.this, GetResultActivity.class);
                     intent.putExtra("pic", "0");
                     intent.putExtra("text", "Упс, что то пошло не так... Вы не сдали");
+                    intent.putExtra("partialArr", partialAnswers);
+                    intent.putExtra("test", (Serializable) test);
                     startActivity(intent);
                 }
                 if(!answers.contains(0) && btnCounter ==20){
                     Intent intent = new Intent(ListQuestActivity.this, GetResultActivity.class);
-                    intent.putExtra("text", "вы все решили");
+                    intent.putExtra("text", "Вы все решили");
                     intent.putExtra("pic", "1");
+                    intent.putExtra("test", (Serializable) test);
                     startActivity(intent);
                 }
-               // finish();
+                if(summ== 2 && btnCounter ==20){
+                    Intent intent = new Intent(ListQuestActivity.this, GetResultActivity.class);
+                    intent.putExtra("text", "Вы допустили две ошибки в разных группах. Вам предложено решить 10 дополнительных вопросов");
+                    intent.putExtra("pic", "2");
+                    intent.putExtra("guantity", "10");
+                    test.setDop(groupForDop);
+                    intent.putExtra("test", (Serializable) test);
+                    startActivity(intent);
+                }
+                if(summ == 1 && btnCounter == 20){
+                    Intent intent = new Intent(ListQuestActivity.this, GetResultActivity.class);
+                    intent.putExtra("text", "Вы допустили одну ошибку. Вам предложено решить 5 дополнительнвх поросов");
+                    intent.putExtra("pic", "2");
+                    intent.putExtra("guantity", "5");
+                    test.setDop(groupForDop);
+                    intent.putExtra("test", (Serializable) test);
+                    startActivity(intent);
+                }
             }
         }
     }
