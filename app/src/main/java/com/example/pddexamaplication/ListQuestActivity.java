@@ -177,12 +177,8 @@ public class ListQuestActivity extends AppCompatActivity {
     public void onClick(View view) {
         Button myButton = (Button)view;
         int number = idParser(myButton);
-//        String numberPic = "";
-//        int variants = questions.get(number).getQuantity();
-//        String textQ= questions.get(number).getTextQuest();
         Intent intent = new Intent(ListQuestActivity.this, QuestionActivity.class);
-        String stringQuest = questions.get(number).getTextQuest() + " answ = " + questions.get(number).getRighAnsw();
-        //intent.putExtra("textQuest",questions.get(number).getTextQuest());
+        String stringQuest = questions.get(number).getTextQuest()+ "answ = "+ questions.get(number).getRighAnsw();
         intent.putExtra("textQuest", stringQuest);
         intent.putExtra("number",Integer.toString(number));
         intent.putExtra("quantityCase",Integer.toString(questions.get(number).getQuantity()));
@@ -198,44 +194,6 @@ public class ListQuestActivity extends AppCompatActivity {
     }
 
     List<Integer> answers = new ArrayList<>();
-
-//    private void simpleCheck(){
-//        for(int i = 0; i< 20; i++){
-//            if(answers.get(i) == 0){
-//                int gr = getGroup(i+1);
-//               // errorCounter++;
-//                groupsWithQuantityError[gr-1]++;
-//            }
-//        }
-//    }
-
-    private  int groupQuantityErrorCheck(){
-        int summ = 0;
-        for(int i = 0;i<4; i++){
-            if(groupsWithQuantityError[i] >=2){
-                return 1;
-            }
-            if(groupsWithQuantityError[i] == 1){
-                summ++;
-            }
-        }
-        if(summ >2){
-            return 1;
-        }
-        return 0;
-    }
-//    private void setGroupsforDop(){
-//        int grCounter = 0;
-//        int quantytyCheck = groupQuantityErrorCheck();
-//        if(quantytyCheck == 0) {
-//            for (int i = 0; i < 4; i++) {
-//                if (groupsWithQuantityError[i] == 1) {
-//                    groupForDop[grCounter] = i+1;
-//                    grCounter++;
-//                }
-//            }
-//        }
-//    }
 
     private int getGroup(int number){
         int answ = -1;
@@ -298,24 +256,25 @@ public class ListQuestActivity extends AppCompatActivity {
                     intent.putExtra("test", (Serializable) test);
                     startActivity(intent);
                 }
-                if(summ== 2 && btnCounter ==20){
+                if(summ!= 0 && btnCounter ==20){
                     Intent intent = new Intent(ListQuestActivity.this, GetResultActivity.class);
-                    intent.putExtra("text", "Вы допустили две ошибки в разных группах. Вам предложено решить 10 дополнительных вопросов");
+                    intent.putExtra("text", "Вы допустили ошибки.");
                     intent.putExtra("pic", "2");
-                    intent.putExtra("guantity", "10");
-                    test.setDop(groupForDop);
+                    intent.putExtra("partialArr", partialAnswers);
+                    //intent.putExtra("guantity", "10");
+                    //test.setDop(groupForDop);
                     intent.putExtra("test", (Serializable) test);
                     startActivity(intent);
                 }
-                if(summ == 1 && btnCounter == 20){
-                    Intent intent = new Intent(ListQuestActivity.this, GetResultActivity.class);
-                    intent.putExtra("text", "Вы допустили одну ошибку. Вам предложено решить 5 дополнительнвх поросов");
-                    intent.putExtra("pic", "2");
-                    intent.putExtra("guantity", "5");
-                    test.setDop(groupForDop);
-                    intent.putExtra("test", (Serializable) test);
-                    startActivity(intent);
-                }
+//                if(summ == 1 && btnCounter == 20){
+//                    Intent intent = new Intent(ListQuestActivity.this, GetResultActivity.class);
+//                    intent.putExtra("text", "Вы допустили одну ошибку. Вам предложено решить 5 дополнительнвх поросов");
+//                    intent.putExtra("pic", "2");
+//                    intent.putExtra("guantity", "5");
+//                    test.setDop(groupForDop);
+//                    intent.putExtra("test", (Serializable) test);
+//                    startActivity(intent);
+//                }
             }
         }
     }
