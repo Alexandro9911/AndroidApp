@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
@@ -42,11 +41,8 @@ public class QuestionActivity extends AppCompatActivity {
         }
         TextView text = new TextView(this);
         String strText = intent.getStringExtra("textQuest");
-        // String sdf = strText+ " answ ="+ rightAnsw;
         text.setText(strText);
-        //text.setMaxWidth(300);
         linLay.addView(text);
-        //int quantity = Integer.parseInt(intent.getStringExtra("quantityCase"));
         final Question question = (Question) intent.getSerializableExtra("class");
         assert question != null;
         final int quantity = question.getQuantity();

@@ -183,7 +183,6 @@ public class ListQuestActivity extends AppCompatActivity {
         intent.putExtra("number",Integer.toString(number));
         intent.putExtra("quantityCase",Integer.toString(questions.get(number).getQuantity()));
         intent.putExtra("contImage", "1");
-        //intent.putExtra("variants",variantsAnsw);
         intent.putExtra("ident",Integer.toString(questions.get(number).getId()));
         intent.putExtra("group",Integer.toString(questions.get(number).getGroup()));
         intent.putExtra("rightAnsw", Integer.toString(questions.get(number).getRighAnsw()));
@@ -220,7 +219,6 @@ public class ListQuestActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 String answerResult = data.getStringExtra("answ");
                 partialAnswers[currentNumb] = Integer.parseInt(data.getStringExtra("partial"));
-               // answers.add(currentNumb,Integer.parseInt(answered));
                 int res = Integer.parseInt(answerResult);
                 answers.set(currentNumb,res);
                 int gr =getGroup(btnCounter);
@@ -261,20 +259,9 @@ public class ListQuestActivity extends AppCompatActivity {
                     intent.putExtra("text", "Вы допустили ошибки.");
                     intent.putExtra("pic", "2");
                     intent.putExtra("partialArr", partialAnswers);
-                    //intent.putExtra("guantity", "10");
-                    //test.setDop(groupForDop);
                     intent.putExtra("test", (Serializable) test);
                     startActivity(intent);
                 }
-//                if(summ == 1 && btnCounter == 20){
-//                    Intent intent = new Intent(ListQuestActivity.this, GetResultActivity.class);
-//                    intent.putExtra("text", "Вы допустили одну ошибку. Вам предложено решить 5 дополнительнвх поросов");
-//                    intent.putExtra("pic", "2");
-//                    intent.putExtra("guantity", "5");
-//                    test.setDop(groupForDop);
-//                    intent.putExtra("test", (Serializable) test);
-//                    startActivity(intent);
-//                }
             }
         }
     }

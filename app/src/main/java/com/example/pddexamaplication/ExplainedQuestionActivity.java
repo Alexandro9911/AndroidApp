@@ -37,7 +37,6 @@ public class ExplainedQuestionActivity extends AppCompatActivity {
         int partialAnsw = Integer.parseInt(data.getStringExtra("partial"));
         TextView text = new TextView(this);
         String strText = question.getTextQuest();
-        // String sdf = strText+ " answ ="+ rightAnsw;
         text.setText(strText);
         linLay.addView(text);
 
@@ -47,13 +46,7 @@ public class ExplainedQuestionActivity extends AppCompatActivity {
             ImageView img = new ImageView(this);
             img.setImageResource(resID);
             linLay.addView(img);
-           // TextView text = new TextView(this);
-           // String strText = question.getTextQuest();
-            // String sdf = strText+ " answ ="+ rightAnsw;
-          //  text.setText(strText);
-          //  linLay.addView(text);
         }
-        //int quantity = Integer.parseInt(intent.getStringExtra("quantityCase"));
         assert question != null;
         int quantity = question.getQuantity();
         Button btn1, btn2, btn3, btn4, btn5;
@@ -63,13 +56,6 @@ public class ExplainedQuestionActivity extends AppCompatActivity {
         btn4 = new Button(this);
         btn5 = new Button(this);
         final Button[] btnArr = {btn1, btn2, btn3, btn4, btn5};
-//        String variantsAnsw = intent.getStringExtra("variants");
-//        assert variantsAnsw != null;
-//        String[] variantsArr = variantsAnsw.split("#");
-
-
-//        final Question question = (Question) intent.getSerializableExtra("class");
-//        assert question != null;
         String[] vr = question.getVariantsAnsw();
         for (int i = 0; i < quantity; i++) {
             String str = vr[i];

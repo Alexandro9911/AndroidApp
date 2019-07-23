@@ -145,13 +145,6 @@ public void setPartialAnsw(int answ ){
         quantity = arr.length ;
         return arr;
     }
-//    private String getQuestFromFile(String str) { // парсер для фопроса с файла
-//        String answ = "";
-//        String[] parts = str.split("\t");
-//        answ = parts[1];
-//        return answ;
-//    }
-
     boolean checkAnsw(){ // проверка ответа на текущий вопрос
         boolean answ = false;
         if(partialAnsw == righAnsw){

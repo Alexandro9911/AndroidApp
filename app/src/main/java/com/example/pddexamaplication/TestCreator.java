@@ -50,32 +50,4 @@ public class TestCreator {
         test.setTest(tst);
         return test;
     }
-    // генерация доп вопросов
-
-
-    Test moreQuest(int[] groups){
-        List<Question> tst = new ArrayList<Question>();
-        Test test = new Test();
-        int counter = 1;
-        int c = 0;
-        if(groups[0] != 0 && groups[1] !=0){
-            c = 2;
-        } else {
-            c = 1;
-        }
-        for (int i = 0; i < c; i++){
-            int number = groups[i];
-            for(int q = 0; q < 5; q++){
-                Question question = new Question();
-                int id =  getRandomID();
-                question.setId(id);
-                question.setGroup(number);
-                question.setNumber(20 + counter);
-                tst.add(question);
-                counter++;
-            }
-        }
-        test.setTest(tst);
-        return  test;
-    }
 }
