@@ -14,8 +14,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void onClick(View view) {
-        Intent intent = new Intent(MainActivity.this, ListQuestActivity.class);
-        startActivity(intent);
+        if(view.getId() == R.id.bilet){
+            Intent intent = new Intent(MainActivity.this, BiletsListActivity.class);
+            startActivity(intent);
+        }
+        if(view.getId() == R.id.button) {
+            Intent intent = new Intent(MainActivity.this, ListQuestActivity.class);
+            startActivity(intent);
+        }
 
     }
 }

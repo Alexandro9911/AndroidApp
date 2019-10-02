@@ -50,4 +50,46 @@ public class TestCreator {
         test.setTest(tst);
         return test;
     }
+
+    Test generateBilet(int number){
+        List<Question> tst = new ArrayList<Question>();
+        List<Integer> listID = generateListId(number);
+        Test bilet = new Test();
+        int counter = 0;
+        for (int category = 1; category < 5; category++) {
+            List<Integer> group = new ArrayList<Integer>();
+            for(int i = 0; i < 5; i ++){
+                Question quest = new Question();
+                int potentialId = listID.get(counter);
+                if (!group.contains(potentialId)) {
+                    group.add(potentialId);
+                    quest.setId(potentialId);
+                    quest.setGroup(category);
+                    quest.setNumber(counter);
+                    tst.add(quest);
+                    counter++;
+                } else {
+                    i--;
+                }
+            }
+
+        }
+        bilet.setTest(tst);
+        return bilet;
+    }
+
+     private List<Integer> generateListId(int number){
+       List<Integer> answ = new ArrayList<>();
+       int start = (number * 5) - 5;
+       int counter = 0;
+       for(int i = 0; i < 20; i++){
+           answ.add(start + counter);
+           if(counter != 5){
+               counter++;
+           } else {
+               counter = 1;
+           }
+       }
+       return answ;
+    }
 }

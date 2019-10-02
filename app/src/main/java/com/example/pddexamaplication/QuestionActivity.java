@@ -15,6 +15,7 @@ import java.util.Objects;
 
 public class QuestionActivity extends AppCompatActivity {
     int rightAnsw = -1;
+    private boolean isImageScaled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,29 +23,36 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question);
         LinearLayout linLay = findViewById(R.id.Linear1);
         final Intent intent = getIntent();
-        int containsImage = Integer.parseInt(intent.getStringExtra("contImage"));
-        String group = intent.getStringExtra("group");
-        String ident = intent.getStringExtra("ident");
-        String right = intent.getStringExtra("rightAnsw");
-        String numb = intent.getStringExtra("number");
-        int normal = Integer.parseInt(numb) +1;
+        final Question question = (Question) intent.getSerializableExtra("class");
+        assert question != null;
+        int containsImage = question.containsImage;
+                //Integer.parseInt(intent.getStringExtra("contImage"));
+        int group = question.getGroup();
+        int ident = question.getId();
+        rightAnsw = question.getRighAnsw();
+        int numb = question.getNumber();
+        int normal = numb +1;
         String txtAction = "Вопрос № "+ normal;
         Objects.requireNonNull(getSupportActionBar()).setTitle(txtAction);
-        rightAnsw = Integer.parseInt(right);
-
-        if (containsImage == 1) {
+                if (containsImage == 1) {
             String mDrawableName = "g" + group + "n" + ident;
             int resID = getResources().getIdentifier(mDrawableName, "drawable", getPackageName());
             ImageView img = new ImageView(this);
+            img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!isImageScaled) v.animate().scaleX(1.4f).scaleY(1.4f).setDuration(500);
+                    if (isImageScaled) v.animate().scaleX(1f).scaleY(1f).setDuration(500);
+                    isImageScaled = !isImageScaled;
+                }
+            });
             img.setImageResource(resID);
             linLay.addView(img);
         }
         TextView text = new TextView(this);
-        String strText = intent.getStringExtra("textQuest");
+        String strText = question.getTextQuest();
         text.setText(strText);
         linLay.addView(text);
-        final Question question = (Question) intent.getSerializableExtra("class");
-        assert question != null;
         final int quantity = question.getQuantity();
         Button btn1, btn2, btn3, btn4, btn5;
         btn1 = new Button(this);

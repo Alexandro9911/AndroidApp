@@ -21,6 +21,7 @@ public class Question implements Serializable {
    private int quantity = -1;
    private String[] variants;
    private String explainText = "";
+    int containsImage = 1;
 
    public String getExplainText(){
        return explainText;
@@ -104,7 +105,6 @@ public void setPartialAnsw(int answ ){
     void setId(int partialId) {
         id = partialId;
     }
-     int containsImage = 0;
 
     void setVariants(InputStream stream, int ident){
         Scanner scan = new Scanner(stream);

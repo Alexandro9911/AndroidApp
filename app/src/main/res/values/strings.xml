@@ -27,4 +27,6 @@
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="bilets">Билеты</string>
+    <string name="z1">Тут будут билеты</string>
 </resources>

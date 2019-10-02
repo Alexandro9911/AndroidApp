@@ -24,6 +24,7 @@ public class ListQuestActivity extends AppCompatActivity {
     int[] groupsWithQuantityError = {0,0,0,0};
     int[] groupForDop = {0,0};
     int[] partialAnswers = new int[20];
+    List<Integer> answers = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -178,21 +179,11 @@ public class ListQuestActivity extends AppCompatActivity {
         Button myButton = (Button)view;
         int number = idParser(myButton);
         Intent intent = new Intent(ListQuestActivity.this, QuestionActivity.class);
-        String stringQuest = questions.get(number).getTextQuest()+ "answ = "+ questions.get(number).getRighAnsw();
-        intent.putExtra("textQuest", stringQuest);
-        intent.putExtra("number",Integer.toString(number));
-        intent.putExtra("quantityCase",Integer.toString(questions.get(number).getQuantity()));
-        intent.putExtra("contImage", "1");
-        intent.putExtra("ident",Integer.toString(questions.get(number).getId()));
-        intent.putExtra("group",Integer.toString(questions.get(number).getGroup()));
-        intent.putExtra("rightAnsw", Integer.toString(questions.get(number).getRighAnsw()));
         intent.putExtra("class", questions.get(number));
         myButton.setEnabled(false);
         myButton.setBackgroundColor(Color.rgb(255, 255, 255));
         startActivityForResult(intent,RESULT_TEST);
     }
-
-    List<Integer> answers = new ArrayList<>();
 
     private int getGroup(int number){
         int answ = -1;

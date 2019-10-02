@@ -18,7 +18,6 @@ public class ExplainedQuestionActivity extends AppCompatActivity {
 
     Question question;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
