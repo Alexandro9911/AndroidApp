@@ -104,6 +104,7 @@ public class BiletActivity extends AppCompatActivity {
                     intent.putExtra("errors", Integer.toString(errors));
                     intent.putExtra("test", test);
                     startActivity(intent);
+
                 }
                 count++;
                 Intent intent = new Intent(BiletActivity.this, BiletActivity.class);
