@@ -25,12 +25,12 @@ public class ListQuestActivity extends AppCompatActivity {
     int[] groupForDop = {0,0};
     int[] partialAnswers = new int[20];
     List<Integer> answers = new ArrayList<>();
+    static final private int RESULT_TEST = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listquest);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Список вопросов");
         for(int i = 0; i < 20;i ++){
             partialAnswers[i] = -1;
         }
@@ -173,7 +173,6 @@ public class ListQuestActivity extends AppCompatActivity {
         currentNumb = num;
         return  num;
     }
-    static final private int RESULT_TEST = 0;
 
     public void onClick(View view) {
         Button myButton = (Button)view;
@@ -199,7 +198,6 @@ public class ListQuestActivity extends AppCompatActivity {
         if(number >= 16 && number <= 20){
             answ = 4;
         }
-
         return answ;
     }
 
@@ -233,16 +231,16 @@ public class ListQuestActivity extends AppCompatActivity {
                 if(errorCounter >= 3 || fatal ==1){
                     Intent intent = new Intent(ListQuestActivity.this, GetResultActivity.class);
                     intent.putExtra("pic", "0");
-                    intent.putExtra("text", "Упс, что то пошло не так... Вы не сдали");
+                    intent.putExtra("text", "Экзамен не сдан!");
                     intent.putExtra("partialArr", partialAnswers);
-                    intent.putExtra("test", (Serializable) test);
+                    intent.putExtra("test", test);
                     startActivity(intent);
                 }
                 if(!answers.contains(0) && btnCounter ==20){
                     Intent intent = new Intent(ListQuestActivity.this, GetResultActivity.class);
-                    intent.putExtra("text", "Вы все решили");
+                    intent.putExtra("text", "Экзамен сдан!");
                     intent.putExtra("pic", "1");
-                    intent.putExtra("test", (Serializable) test);
+                    intent.putExtra("test", test);
                     startActivity(intent);
                 }
                 if(summ!= 0 && btnCounter ==20){
@@ -250,7 +248,7 @@ public class ListQuestActivity extends AppCompatActivity {
                     intent.putExtra("text", "Вы допустили ошибки.");
                     intent.putExtra("pic", "2");
                     intent.putExtra("partialArr", partialAnswers);
-                    intent.putExtra("test", (Serializable) test);
+                    intent.putExtra("test", test);
                     startActivity(intent);
                 }
             }

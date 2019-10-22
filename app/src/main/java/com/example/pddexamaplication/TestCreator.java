@@ -80,8 +80,8 @@ public class TestCreator {
 
      private List<Integer> generateListId(int number){
        List<Integer> answ = new ArrayList<>();
-       int start = (number * 5) - 5;
-       int counter = 0;
+       int start = (number * 5) - 6;
+       int counter = 1;
        for(int i = 0; i < 20; i++){
            answ.add(start + counter);
            if(counter != 5){

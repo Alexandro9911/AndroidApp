@@ -101,4 +101,54 @@ public class Test implements Serializable {
         return answ;
     }
 
+
+    /** Во время решения экзамена возможны исходы:
+     *      1. Допущено 3 ошибки в неважно каких категориях - тест не сдан
+     *      2. Допущено две ошибки в одной категории - тест не сдан
+     *      3. Допущено две ошибки в разных категориях - генерация 10 доп вопросов из этих категорий
+     *      4. Допущена одна ошибка - генерация 5 доп вопросов из этой категории
+     *      5. Ошибок нет - тест сдан
+     * формат вывода функции:
+     * @param quantity  - выводит количество ошибок. По умолчанию там 0
+     * @param group1 - выводит первую группу в которой допущена ошибка
+     * @param group2 - выводит вторую группу в которой допущена ошибка
+     * @param result - тест сдан\не сдан
+     *
+     */
+    int[] globlCheck(int quantity, int group1, int group2, int result){
+            int[] res = {0,0,0,0};
+            res[0] = quantity;
+            res[1] = group1;
+            res[2] = group2;
+            res[3] = result;
+
+        for (Question quest : test){
+            int partialAnsw = quest.getPartialAnsw();
+            int rightAnsw = quest.getRighAnsw();
+            if( partialAnsw != rightAnsw && partialAnsw != -1){
+                res[0]++;
+                if(quantity == 1){
+                    res[1] = quest.getGroup();
+                    res[3] = 0;
+                }
+                if(quantity == 2){
+                    if(group1 == quest.getGroup()){
+                        res[2] = quest.getGroup();
+                        res[3] = -1;
+                        break;
+                    } else {
+                        res[2] = quest.getGroup();
+                        res[3] = 0;
+                    }
+                }
+                if(quantity >=3){
+                    res[3] = -1;
+                    break;
+                }
+            }
+        }
+        return res;
+    }
+
+
 }

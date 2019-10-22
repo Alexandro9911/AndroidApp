@@ -31,6 +31,7 @@ public class BiletsListActivity extends AppCompatActivity {
             String str = "Билет " + i;
             btn.setText(str);
             final int finalI = i;
+
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -39,6 +40,7 @@ public class BiletsListActivity extends AppCompatActivity {
                     Intent intent = new Intent(BiletsListActivity.this, BiletActivity.class);
                     intent.putExtra("test", tst);
                     String str = Integer.toString(counter);
+                    intent.putExtra("numb", finalI);
                     intent.putExtra("counter",str);
                     intent.putExtra("errors", Integer.toString(errorsCounter));
                     startActivity(intent);

@@ -21,7 +21,13 @@ public class Question implements Serializable {
    private int quantity = -1;
    private String[] variants;
    private String explainText = "";
-    int containsImage = 1;
+   int containsImage = 1;
+   private int answered = 0;
+
+
+   public void setAnswered(int i){ answered = i; }
+
+   public int getAnswered(){ return answered; }
 
    public String getExplainText(){
        return explainText;

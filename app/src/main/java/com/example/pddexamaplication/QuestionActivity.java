@@ -15,7 +15,6 @@ import java.util.Objects;
 
 public class QuestionActivity extends AppCompatActivity {
     int rightAnsw = -1;
-    private boolean isImageScaled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +25,6 @@ public class QuestionActivity extends AppCompatActivity {
         final Question question = (Question) intent.getSerializableExtra("class");
         assert question != null;
         int containsImage = question.containsImage;
-                //Integer.parseInt(intent.getStringExtra("contImage"));
         int group = question.getGroup();
         int ident = question.getId();
         rightAnsw = question.getRighAnsw();
@@ -38,14 +36,6 @@ public class QuestionActivity extends AppCompatActivity {
             String mDrawableName = "g" + group + "n" + ident;
             int resID = getResources().getIdentifier(mDrawableName, "drawable", getPackageName());
             ImageView img = new ImageView(this);
-            img.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (!isImageScaled) v.animate().scaleX(1.4f).scaleY(1.4f).setDuration(500);
-                    if (isImageScaled) v.animate().scaleX(1f).scaleY(1f).setDuration(500);
-                    isImageScaled = !isImageScaled;
-                }
-            });
             img.setImageResource(resID);
             linLay.addView(img);
         }
