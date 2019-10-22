@@ -31,7 +31,7 @@ public class BiletResultActivity extends AppCompatActivity {
             res.setTextColor(getResources().getColor(R.color.tvGreen));
          } else {
             res.setTextColor(getResources().getColor(R.color.tvRed));
-            // res.setTextColor(Color.RED);
+
             Log.d(TAG,"red" + " errs: " + errs);
             res.setText(str);
             }
