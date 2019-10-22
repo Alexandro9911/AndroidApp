@@ -29,15 +29,12 @@ public class BiletResultActivity extends AppCompatActivity {
             Log.d(TAG,"green" + " errs: " + errs);
             res.setText(str);
             res.setTextColor(getResources().getColor(R.color.tvGreen));
-            res.refreshDrawableState();
-            res.setSelected(true);
-        } else {
+         } else {
             res.setTextColor(getResources().getColor(R.color.tvRed));
             // res.setTextColor(Color.RED);
             Log.d(TAG,"red" + " errs: " + errs);
             res.setText(str);
-            res.setSelected(false);
-        }
+            }
     }
 
     public void onClick(View view) {

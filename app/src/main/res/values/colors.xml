@@ -7,10 +7,4 @@
 
     <color name="tvRed">#F44336</color>
     <color name="tvGreen">#4CAF50</color>
-    <?xml version="1.0" encoding="utf-8"?>
-    <selector xmlns:android="http://schemas.android.com/apk/res/android"
-        android:name="select">
-        <item android:color="#F44336" android:state="false"/>
-        <item android:color="#4CAF50" android:state="true"/>
-    </selector>
-</resources>
+   </resources>
