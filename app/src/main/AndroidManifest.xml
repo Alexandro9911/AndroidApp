@@ -42,5 +42,4 @@
         <activity android:name=".BiletResultActivity"
             android:screenOrientation="portrait"/>
     </application>
-
 </manifest>
