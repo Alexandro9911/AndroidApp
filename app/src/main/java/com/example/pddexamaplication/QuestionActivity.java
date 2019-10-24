@@ -1,5 +1,6 @@
 package com.example.pddexamaplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
@@ -78,5 +80,23 @@ public class QuestionActivity extends AppCompatActivity {
             });
             linLay.addView(btnArr[i]);
         }
+    }
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Предупреждение")
+                .setMessage("Вы действительно хотите закончить тестирование?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Intent intent = new Intent(QuestionActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                    }
+                }).show();
     }
 }

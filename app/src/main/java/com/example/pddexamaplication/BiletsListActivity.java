@@ -1,14 +1,11 @@
 package com.example.pddexamaplication;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -123,5 +120,10 @@ public class BiletsListActivity extends AppCompatActivity {
                 System.exit(-2);
             }
         }
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(BiletsListActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }

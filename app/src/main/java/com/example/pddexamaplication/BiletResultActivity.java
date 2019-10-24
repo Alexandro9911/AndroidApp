@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class BiletResultActivity extends AppCompatActivity {
 
@@ -28,10 +29,17 @@ public class BiletResultActivity extends AppCompatActivity {
         if(errs >= 18){
             Log.d(TAG,"green" + " errs: " + errs);
             res.setText(str);
-            res.setTextColor(getResources().getColor(R.color.tvGreen));
-         } else {
-            res.setTextColor(getResources().getColor(R.color.tvRed));
 
+            res.setTextColor(getResources().getColor(R.color.tvGreen));
+            //int textColor = ContextCompat.getColor(this, R.color.tvGreen);
+            //res.setTextColor(textColor);
+            //res.setTextColor(0xFF0000FF);
+         } else {
+
+            res.setTextColor(getResources().getColor(R.color.tvRed));
+            // int textColor = ContextCompat.getColor(this, R.color.tvRed);
+            // res.setTextColor(textColor);
+            // res.setTextColor(0xFF0000FF);
             Log.d(TAG,"red" + " errs: " + errs);
             res.setText(str);
             }

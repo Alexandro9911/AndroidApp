@@ -14,7 +14,6 @@ import java.util.Objects;
 
 public class ExplainListActivity extends AppCompatActivity {
 
-
     Test test;
     int btnCounter = 0;
     int currentNumb = 0;
