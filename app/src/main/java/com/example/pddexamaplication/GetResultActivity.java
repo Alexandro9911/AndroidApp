@@ -111,4 +111,8 @@ public class GetResultActivity extends AppCompatActivity {
                 linearLayout.addView(btn2);
         }
     }
+    @Override
+    public void onBackPressed() {
+
+    }
 }

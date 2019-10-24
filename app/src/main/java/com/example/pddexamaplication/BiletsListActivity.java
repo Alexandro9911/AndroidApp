@@ -35,6 +35,7 @@ public class BiletsListActivity extends AppCompatActivity {
                     tst = creator.generateBilet(finalI);
                     fillIn(tst);
                     Intent intent = new Intent(BiletsListActivity.this, BiletActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     intent.putExtra("test", tst);
                     String str = Integer.toString(counter);
                     intent.putExtra("numb", finalI);
