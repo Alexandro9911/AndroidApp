@@ -57,6 +57,7 @@ public class QuestionActivity extends AppCompatActivity {
         for (int i = 0; i < quantity; i++) {
             String str = vr[i];
             btnArr[i].setText(str);
+            btnArr[i].setAllCaps(false);
             final int identify = i + 1;
             btnArr[i].setId(identify);
             final int finalI = i;

@@ -14,7 +14,7 @@ public class BiletResultActivity extends AppCompatActivity {
 
     Test tst;
     int bilet = 0;
-    private static final String TAG = "myLogs";
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_biletresult);
@@ -27,25 +27,13 @@ public class BiletResultActivity extends AppCompatActivity {
         tst = (Test) data.getSerializableExtra("test");
         int errs =  20 - Integer.parseInt(data.getStringExtra("errors"));
         String str = errs + "/" + 20;
-//        if(errs >= 18){
-//            Log.d(TAG,"green" + " errs: " + errs);
-//            res.setText(str);
-//
-//            res.setTextColor(getResources().getColor(R.color.tvGreen));
-//            //int textColor = ContextCompat.getColor(this, R.color.tvGreen);
-//            //res.setTextColor(Color.rgb(229, 0, 0));
-//            //res.setTextColor(0xFF0000FF);
-//         } else {
-//
-//            res.setTextColor(getResources().getColor(R.color.tvRed));
-//            // int textColor = ContextCompat.getColor(this, R.color.tvRed);
-//            // res.setTextColor(Color.rgb(0, 196, 0));
-//            // res.setTextColor(0xFF0000FF);
-//            Log.d(TAG,"red" + " errs: " + errs);
-//            res.setText(str);
-//            }
-        res.setText(str);
-        res.setTextColor(getResources().getColor(R.color.tvGreen));
+        if(errs >= 18){
+            res.setText(str);
+            res.setTextColor(getResources().getColor(R.color.tvGreen));
+         } else {
+            res.setTextColor(getResources().getColor(R.color.tvRed));
+            res.setText(str);
+            }
     }
 
     public void onClick(View view) {

@@ -59,6 +59,7 @@ public class ExplainedQuestionActivity extends AppCompatActivity {
         for (int i = 0; i < quantity; i++) {
             String str = vr[i];
             btnArr[i].setText(str);
+            btnArr[i].setAllCaps(false);
             btnArr[i].setEnabled(false);
 
                 if (i == partialAnsw) {

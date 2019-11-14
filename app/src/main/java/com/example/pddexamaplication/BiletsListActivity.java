@@ -25,6 +25,7 @@ public class BiletsListActivity extends AppCompatActivity {
         for (int i = 1; i < 41 ; i++){
             Button btn = new Button(this);
             btn.setId(i + 100);
+            btn.setAllCaps(false);
             String str = "Билет " + i;
             btn.setText(str);
             final int finalI = i;

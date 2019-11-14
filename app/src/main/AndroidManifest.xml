@@ -20,16 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".QuestionActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".ListQuestActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".GetResultActivity"
+        <activity android:name=".QuestionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ListQuestActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".GetResultActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".ExplainListActivity"
             android:screenOrientation="portrait"/>

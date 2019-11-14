@@ -22,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:textAllCaps="false"
         android:id="@+id/again"
         android:layout_width="151dp"
         android:layout_height="60dp"
@@ -37,6 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:textAllCaps="false"
         android:id="@+id/nextBilet"
         android:layout_width="151dp"
         android:layout_height="60dp"
@@ -52,6 +54,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:textAllCaps="false"
         android:id="@+id/toMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

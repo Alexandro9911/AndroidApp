@@ -24,11 +24,7 @@
     <string name="_19">Вопрос 19</string>
     <string name="_20">Вопрос 20</string>
     <string name="questionNumber">Вопрос №</string>
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="bilets">Билеты</string>
-    <string name="z1">Тут будут билеты</string>
     <string name="alexandro9911">© Alexandro9911</string>
     <string name="text">text</string>
 </resources>

@@ -71,6 +71,7 @@ public class BiletActivity extends AppCompatActivity {
                 Button btn = new Button(this);
                 btn.setId(i + 1);
                 btn.setText(vr[i]);
+                btn.setAllCaps(false);
                 listBtn.add(btn);
             }
 
@@ -129,6 +130,7 @@ public class BiletActivity extends AppCompatActivity {
         LinearLayout linearLayout = findViewById(R.id.LinearBilet);
         linearLayout.addView(explainText);
         Button exitBtn = new Button(this);
+        exitBtn.setAllCaps(false);
         if (count == 19) {
             exitBtn.setText("Завершить");
         } else {
