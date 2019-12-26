@@ -92,4 +92,33 @@ public class TestCreator {
        }
        return answ;
     }
+
+    List<Question> generateDop(int[] groups){
+        List<Question> test = new ArrayList<>();
+        if(groups[0] != 0 && groups[1] !=0){
+            for(int i = 0; i < 5; i++){
+                Question quest = new Question();
+                quest.setId(getRandomID());
+                quest.setGroup(groups[0]);
+                quest.setNumber(20 + i);
+                test.add(quest);
+            }
+            for(int i = 0; i < 5; i++){
+                Question quest = new Question();
+                quest.setId(getRandomID());
+                quest.setGroup(groups[1]);
+                quest.setNumber(25 + i);
+                test.add(quest);
+            }
+        } else {
+            for(int i = 0; i < 5; i++){
+                Question quest = new Question();
+                quest.setId(getRandomID());
+                quest.setGroup(groups[0]);
+                quest.setNumber(20 + i);
+                test.add(quest);
+            }
+        }
+        return test;
+    }
 }

@@ -90,22 +90,6 @@ public class BiletActivity extends AppCompatActivity {
                             int right = question.getRighAnsw();
                             Button rightbtn = findViewById(right);
                             rightbtn.setBackgroundColor(Color.rgb(0, 196, 0));
-                            if (count == 19) {
-                                Intent intent = new Intent(BiletActivity.this, BiletResultActivity.class);
-                                intent.putExtra("errors", Integer.toString(errors));
-                                intent.putExtra("test", test);
-                                intent.putExtra("test", test);
-                                intent.putExtra("numb", bilet);
-                                startActivity(intent);
-                            } else {
-                                count++;
-                                Intent intent = new Intent(BiletActivity.this, BiletActivity.class);
-                                intent.putExtra("test", test);
-                                intent.putExtra("numb", numb);
-                                intent.putExtra("counter", Integer.toString(count));
-                                intent.putExtra("errors", Integer.toString(errors));
-                                startActivity(intent);
-                            }
                         } else {
                             errors++;
                             int right = question.getRighAnsw();
@@ -146,6 +130,7 @@ public class BiletActivity extends AppCompatActivity {
                     intent.putExtra("numb", bilet);
 
                     startActivity(intent);
+                    finish();
                 } else {
                     count++;
                     Intent intent = new Intent(BiletActivity.this, BiletActivity.class);
@@ -154,6 +139,7 @@ public class BiletActivity extends AppCompatActivity {
                     intent.putExtra("counter", Integer.toString(count));
                     intent.putExtra("errors", Integer.toString(errors));
                     startActivity(intent);
+                    finish();
                 }
             }
         });
@@ -162,31 +148,20 @@ public class BiletActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (count != 0) {
-            count--;
-            Intent intent = new Intent(BiletActivity.this, BiletActivity.class);
+        new AlertDialog.Builder(this)
+                .setTitle("Предупреждение")
+                .setMessage("Вы действительно хотите закончить выполнение билета?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Intent intent = new Intent(BiletActivity.this, BiletsListActivity.class);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
 
-            intent.putExtra("errors", Integer.toString(errors));
-            intent.putExtra("test", test);
-            intent.putExtra("counter", Integer.toString(count));
-            intent.putExtra("numb", bilet);
-            startActivity(intent);
-        } else {
-            new AlertDialog.Builder(this)
-                    .setTitle("Предупреждение")
-                    .setMessage("Вы действительно хотите закончить выполнение билета?")
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setPositiveButton("Да", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            Intent intent = new Intent(BiletActivity.this, BiletsListActivity.class);
-                            startActivity(intent);
-                        }
-                    })
-                    .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-
-                        }
-                    }).show();
-        }
+                    }
+                }).show();
     }
 }

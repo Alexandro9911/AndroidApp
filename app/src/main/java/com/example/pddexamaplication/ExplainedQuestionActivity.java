@@ -9,9 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Objects;
 
 public class ExplainedQuestionActivity extends AppCompatActivity {
@@ -33,7 +31,9 @@ public class ExplainedQuestionActivity extends AppCompatActivity {
         String group = Integer.toString(question.getGroup());
         String ident = Integer.toString(question.getId());
         int rightAnsw = question.getRighAnsw();
-        int partialAnsw = Integer.parseInt(data.getStringExtra("partial"));
+        Bundle bndl = data.getExtras();
+        assert bndl != null;
+        int partialAnsw = bndl.getInt("partial");
         TextView text = new TextView(this);
         String strText = question.getTextQuest();
         text.setText(strText);
@@ -82,5 +82,10 @@ public class ExplainedQuestionActivity extends AppCompatActivity {
             }
         });
         linLay.addView(button);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

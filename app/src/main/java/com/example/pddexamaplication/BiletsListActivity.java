@@ -12,11 +12,11 @@ import java.util.List;
 
 public class BiletsListActivity extends AppCompatActivity {
 
-   // SQLiteDatabase DB = openOrCreateDatabase("results",MODE_PRIVATE,null);
     Test tst = new Test();
     TestCreator creator = new TestCreator();
     int counter = 0;
     int errorsCounter = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +48,6 @@ public class BiletsListActivity extends AppCompatActivity {
             linearLayout.addView(btn);
         }
     }
-//    private String previousResult(){
-//
-//    }
 
     private void fillIn(Test test){
         List<Question> questions = test.getTest();

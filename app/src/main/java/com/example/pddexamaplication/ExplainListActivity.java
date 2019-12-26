@@ -1,11 +1,14 @@
 package com.example.pddexamaplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -15,28 +18,81 @@ import java.util.Objects;
 public class ExplainListActivity extends AppCompatActivity {
 
     Test test;
+    Test dopTest;
     int btnCounter = 0;
     int currentNumb = 0;
-    int [] partial;
+    int[] partial;
     List<Question> questionList = new ArrayList<>();
+    List<Question> dopList = new ArrayList<>();
+    List<View> dopBtnArr = new ArrayList<>();
+    int dopQuantity;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_explainlistquest);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Просмотр ошибок");
         Intent data = getIntent();
+
+
         test = (Test) data.getSerializableExtra("test");
         assert partial != null;
-        partial = data.getIntArrayExtra("partial");
+        assert test != null;
+        partial = test.getPartialAnswrs();
+        check();
+        Bundle bndl = data.getExtras();
+        assert bndl != null;
+        final int wasDop = bndl.getInt("wasDop");
+        dopQuantity = bndl.getInt("dopQuantity") - 20;
         assert test != null;
         questionList = test.getTest();
+
+        dopBtnArr.add(findViewById(R.id.button2));
+        dopBtnArr.add(findViewById(R.id.button3));
+        dopBtnArr.add(findViewById(R.id.button4));
+        dopBtnArr.add(findViewById(R.id.button5));
+        dopBtnArr.add(findViewById(R.id.button6));
+        dopBtnArr.add(findViewById(R.id.button7));
+        dopBtnArr.add(findViewById(R.id.button8));
+        dopBtnArr.add(findViewById(R.id.button9));
+        dopBtnArr.add(findViewById(R.id.button10));
+        dopBtnArr.add(findViewById(R.id.button11));
+        for (View v : dopBtnArr) {
+            v.setVisibility(View.INVISIBLE);
+            v.setEnabled(false);
+        }
+        if (wasDop == 0) {
+            //  dopTest = (Test) data.getSerializableExtra("dopTest");
+
+            assert dopTest != null;
+            dopList = test.getDoptest();
+            for (int i = 0; i < dopQuantity; i++) {
+                dopBtnArr.get(i).setEnabled(true);
+                Button btn = (Button) dopBtnArr.get(i);
+                btn.setEnabled(true);
+                btn.setVisibility(View.VISIBLE);
+                final int finalI = i;
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        view.setBackgroundColor(Color.rgb(255, 255, 255));
+                        Intent intent = new Intent(ExplainListActivity.this, ExplainedQuestionActivity.class);
+                        intent.putExtra("question", dopList.get(finalI));
+                        Question quest = dopList.get(finalI);
+                        intent.putExtra("contImage", "1");
+                        intent.putExtra("partial", test.getDopPartialAnswrs()[finalI]);
+                        startActivity(intent);
+                    }
+                });
+            }
+        }
     }
 
-    int idParser(Button btn){
+    int idParser(Button btn) {
         int num = -1;
         btnCounter++;
-        switch (btn.getId()){
+        switch (btn.getId()) {
             case R.id.buttonQuest1:
                 num = 0;
                 break;
@@ -99,17 +155,46 @@ public class ExplainListActivity extends AppCompatActivity {
                 break;
         }
         currentNumb = num;
-        return  num;
+        return num;
     }
+
+    private void check() {
+        String res = "";
+        for (int i = 0; i < 20; i++) {
+            res += test.getPartialAnswrs()[i] + " ";
+        }
+    }
+
     public void onClick(View view) {
-        Button myButton = (Button)view;
-        myButton.setBackgroundColor(Color.rgb(255,255,255));
+        Button myButton = (Button) view;
+        myButton.setBackgroundColor(Color.rgb(255, 255, 255));
         int number = idParser(myButton);
 
         Intent intent = new Intent(ExplainListActivity.this, ExplainedQuestionActivity.class);
         intent.putExtra("question", questionList.get(number));
         intent.putExtra("contImage", "1");
-        intent.putExtra("partial",Integer.toString(partial[number]));
+
+        intent.putExtra("partial", partial[number]);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Предупреждение")
+                .setMessage("Вы действительно хотите закончить просмотр ошибок?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Intent intent = new Intent(ExplainListActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                })
+                .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                    }
+                }).show();
     }
 }

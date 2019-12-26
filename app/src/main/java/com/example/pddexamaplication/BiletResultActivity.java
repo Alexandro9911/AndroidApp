@@ -1,14 +1,10 @@
 package com.example.pddexamaplication;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 public class BiletResultActivity extends AppCompatActivity {
 
@@ -22,8 +18,7 @@ public class BiletResultActivity extends AppCompatActivity {
         Intent data = getIntent();
         Bundle bndl = data.getExtras();
         assert bndl != null;
-        final int numb = bndl.getInt("numb");
-        bilet = numb;
+        bilet = bndl.getInt("numb");
         tst = (Test) data.getSerializableExtra("test");
         int errs =  20 - Integer.parseInt(data.getStringExtra("errors"));
         String str = errs + "/" + 20;

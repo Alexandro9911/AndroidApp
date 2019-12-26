@@ -15,15 +15,17 @@ public class MainActivity extends AppCompatActivity {
         if(view.getId() == R.id.bilet){
             Intent intent = new Intent(MainActivity.this, BiletsListActivity.class);
             startActivity(intent);
+            finish();
         }
         if(view.getId() == R.id.button) {
             Intent intent = new Intent(MainActivity.this, ListQuestActivity.class);
             startActivity(intent);
+            finish();
         }
 
     }
     @Override
     public void onBackPressed() {
-
+        finish();
     }
 }
