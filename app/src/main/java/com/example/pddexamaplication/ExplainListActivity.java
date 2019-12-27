@@ -47,6 +47,11 @@ public class ExplainListActivity extends AppCompatActivity {
         dopQuantity = bndl.getInt("dopQuantity") - 20;
         assert test != null;
         questionList = test.getTest();
+        String res = "ACTIVITY EXPLAINED: partials -> ";
+        for(int i = 0; i < 20; i ++){
+            res += test.getPartialAnswrs()[i]+ " ";
+        }
+        Log.d("watch",res);
 
         dopBtnArr.add(findViewById(R.id.button2));
         dopBtnArr.add(findViewById(R.id.button3));
@@ -67,6 +72,7 @@ public class ExplainListActivity extends AppCompatActivity {
 
             assert dopTest != null;
             dopList = test.getDoptest();
+
             for (int i = 0; i < dopQuantity; i++) {
                 dopBtnArr.get(i).setEnabled(true);
                 Button btn = (Button) dopBtnArr.get(i);

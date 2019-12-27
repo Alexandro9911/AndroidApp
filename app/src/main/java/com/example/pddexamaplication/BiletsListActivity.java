@@ -124,5 +124,6 @@ public class BiletsListActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent(BiletsListActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }

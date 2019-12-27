@@ -154,8 +154,7 @@ public class BiletActivity extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        Intent intent = new Intent(BiletActivity.this, BiletsListActivity.class);
-                        startActivity(intent);
+                        finish();
                     }
                 })
                 .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
