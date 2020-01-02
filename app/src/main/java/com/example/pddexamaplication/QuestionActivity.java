@@ -51,7 +51,7 @@ public class QuestionActivity extends AppCompatActivity {
         }
 
         TextView text = new TextView(this);
-        String strText = question.getTextQuest() + "answ = " + question.getRighAnsw();
+        String strText = question.getTextQuest();
         text.setText(strText);
         linLay.addView(text);
 

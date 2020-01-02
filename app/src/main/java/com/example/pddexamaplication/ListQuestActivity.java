@@ -22,7 +22,7 @@ public class ListQuestActivity extends AppCompatActivity {
     TestCreator creator = new TestCreator();
     Test test = creator.testCreator();
     List<Question> questions = test.getTest();
-
+    
     int[] partialAnswers = new int[20];
     int currentNumb = 0;
     int btnCounter = 0;
